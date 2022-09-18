@@ -2,6 +2,4 @@
 Primeira Avaliação Ponteiros
 
 Integrante(s): Tiago Bezerra - Turma DCA0803
-
-Teste
-Teste2
+	       Arilson Nascimento - Turma DCA0803
