@@ -1,1 +1,35 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i=3,j=5;
+    int *p, *q;
+
+    p = &i;
+    q = &j;
+
+    //mostrar na tela:
+    p == &i;
+    *p - *q;
+    **&p;
+    3 - *p/(*q) + 7;
+
+    printf("p = %d", p == &i,"\n");
+    printf("\n*p - *q = %d", *p - *q,"\n");
+    printf("\n**&p = %d", **&p,"\n");
+    printf("\n3 - *p/(*q) + 7 = %d", 3 - *p/(*q) + 7,"\n");
+
+    getch();
+/*
+    RESPOSTAS:
+        p = 1
+        *p - *q = -2
+        **&p = 3
+        3 - *p/(*q) + 7 = 10
+
+*/
+
+    return 0;
+}
