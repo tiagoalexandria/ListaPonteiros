@@ -1,3 +1,4 @@
+//Feita por TIAGO
 /*
 Ponteiro é uma variável que guarda um endereço de memória, assim sendo, ele aponta um local da memória que já está atribuido a outra variavel "real", e então podendo fazer interações com endereçamento e até com o valor da variável atribuida ao ponteiro.
 
