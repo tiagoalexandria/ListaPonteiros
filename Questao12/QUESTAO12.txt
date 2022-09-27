@@ -1,0 +1,24 @@
+/*
+Ponteiro é uma variável que guarda um endereço de memória, assim sendo, ele aponta um local da memória que já está atribuido a outra variavel "real", e então podendo fazer interações com endereçamento e até com o valor da variável atribuida ao ponteiro.
+
+O identificador ponteiro em C se dá como *ponteiro sendo assim, asterisco+nome_da_variável.
+
+PROGRAMA - EXEMPLO:
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{   int *p;
+    int numero = 50;
+    sizeof(numero);
+    //p = 20; = Invalido pois p eh apenas um enderecamento
+    //p = 50; = invalido, mesmo o valor estando correto, 50 nao eh inerente a p, e sim a numero
+    p = &numero; //p = endereco de memoria de numero
+    printf("VALOR DO ENDERECO DE p = %d\n");
+    *p = numero; //numero; valido, endereco de p = valor da variavel de numero
+    printf("VALOR ALOCADO EM p = %d\n");
+
+    return 0;
+}
