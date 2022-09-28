@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+//Aluno Tiago bezerra - DCA0803
+
+int main()
+{
+    int i,n,j;
+    float temp=0.0f;
+    printf("Digite o valor de n = \n");
+    scanf("%d", &n);
+
+
+    float *a;
+    a=malloc(n*sizeof(float)); //Alocacao de memoria (a)
+    for(i=0;i<=n; i++){
+        a[i]=rand() % 100+0.3;
+    }
+
+
+    printf("\n\n %d numeros float foram gerados aleatoriamente! \n\n", n);
+    printf("\n\n Aqui estao seus numeros: \n\n");
+
+    for(i= 0; i<=n; i++)
+    {
+        printf("%.2f  ", a[i]);
+    }
+
+    printf("\n");
+    for(i=0;i<=n;i++)
+    {
+        for(j=0;j<n-i;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                temp=a[j+1];
+                a[j+1]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+
+    printf("\n\n Agora alinhados do menor para o maior: \n\n");
+
+    for(i= 0; i<=n; i++)
+    {
+        printf("%.2f  ", a[i]);
+    }
+    printf("\n\n");
+    free(a); //Liberacao de memoria (a)
+}
