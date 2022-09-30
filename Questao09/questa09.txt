@@ -1,0 +1,11 @@
+
+//Feita por Arilson Nascimento - Matricula 20220021060 - DCA0803
+
+
+			x for declarado como char? 	// Resposta:x + 1 = 4093, x + 2 = 4094, x + 3 = 4095  
+
+			x for declarado como int?	// Resposta:x + 1 = 4094, x + 2 = 4096, x + 3 = 4098  
+
+			x for declarado como float?	// Resposta:x + 1 = 4096, x + 2 = 409A, x + 3 = 409E  
+
+			x for declarado como double?	// Resposta:x + 1 = 409A, x + 2 = 40A2, x + 3 = 40AA  

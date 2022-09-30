@@ -1,0 +1,2 @@
+//Feita por Arilson Nascimento - Matricula 20220021060 - DCA0803
+//Resultado: *(pulo + 2);

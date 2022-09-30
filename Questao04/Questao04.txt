@@ -1,0 +1,146 @@
+#include <stdio.h>
+#include <stdlib.h>
+//Feita por Arilson Nascimento - Matricula 20220021060 - DCA0803
+int main()
+{
+    int valor;
+    int *p1;
+    float temp;
+    float *p2;
+    char aux;
+    char *nome = "Ponteiros";
+    char *p3;
+    int idade;
+    int vetor[3];
+    int *p4;
+    int *p5;
+
+    /* (a) */
+
+    valor = 10;                 // Armazena o valor 10 na variável "valor";
+    p1 = &valor;                // Variável que recebe o endereço da variável "valor";
+    *p1 = 20;                   // Armazena o valor 20 dentro do espaço de memória com endereço "p1";
+
+    printf("%d \n", valor);     // Imprimi na tela o valor da variável "valor". A resposta saiu conforme o esperado.
+                                // ---->> O resultado da variável valor: 20
+
+
+
+
+    /* (b) */
+    temp = 26.5;                // "temp" armazena o valor 26.5;
+    p2 = &temp;                 // "p2" recebe o endereço da variável "temp";
+    *p2 = 29.0;                 // recebe o endereço de 29.0;
+
+    printf("%.1f \n", temp);    // imprime na tela o valor de "temp". O valor de "temp" é 29.0.
+
+
+
+
+    /* (c) */
+    p3 = &nome[0];              // Armazena o endereço do vetor 'nome[0]' no ponteiro 'p3'( primeiro elemento).
+    aux = *p3;                  // 'aux' é uma variável auxiliar que recebe o conteudo do ponteiro 'p3'
+
+    printf("%c \n", aux);       // Imprime o valor guadado na variável auxiliar 'aux'
+                                // Resultado: P
+
+
+
+    /* (d) */
+    p3 = &nome[4];              // Armazena o endereço do vetor 'nome[4]' no ponteiro 'p3'( quarto elemento).
+    aux = *p3;                  // 'aux' é uma variável auxiliar que recebe o conteudo do ponteiro 'p3'
+
+    printf("%c \n", aux);       // Imprime o valor guadado na variável auxiliar 'aux'
+                                // Resultado: e
+
+
+
+    /* (e) */
+    p3 = nome;                  // Armazena o endereço do vetor 'nome' no ponteiro p3. Por não ter sido especificado a posição do vetor, o ponteiro 'p3' irá armazenar a posição '0' do vetor 'nome'.
+
+    printf("%c \n", *p3);       // Imprime o valor apontado por 'p3'.
+                                //Resultado: P
+
+
+    /* (f) */
+    p3 = p3 + 4;                // O endereço do ponteiro 'p3' irá se deslocar 4 bytes para frente, ja que o ponteiro 'p3' é do tipo char(1 byte).
+
+    printf("%c \n", *p3);       // Imprime o valor apontado por 'p3'.
+                                // Resultado: e
+
+
+
+
+    /* (g) */
+    p3--;                       // Pelo fato de 'p3' ser do tipo char, irá deslocar o endereço do ponteiro em 1 byte para traz.
+    printf("%c \n", *p3);       // Imprime o valor apontado por 'p3'.
+                                // Resultado: t
+
+
+
+
+    /* (h) */
+ 	vetor[0] = 31;	            // Armazena o valor '31' na posição 'vetor[0]'.
+ 	vetor[1] = 45;	            // Armazena o valor '45' na posição 'vetor[0]'.
+ 	vetor[2] = 27;	            // Armazena o valor '27' na posição 'vetor[0]'.
+  	p4 = vetor;	                // O ponteiro 'p4' recebe o endereço do vetor 'vetor'. Como 'p4' só guarda um endereço, então o endereço guardado no
+                                // ponteiro será o endereço da posição '0' do vetor 'vetor'.
+ 	idade = *p4;	            // Armazena o conteúdo do endereço apontado por 'p4' na variável idade.
+
+ 	printf("%d \n", idade);	    //Imprime o valor da variável idade.
+                                //Resultado: 31
+
+
+
+
+
+    /* (i) */
+  	p5 = p4 + 1;	            // O endereço do ponteiro 'p5' será incrementado em 1 byte(char).
+ 	idade = *p5;	            // Armazena o conteúdo apontado por 'p5'.
+ 	printf("%d \n", idade);	    // Imprime o valor da variável idade.
+                                // Resultado: 45
+
+
+
+
+
+ 	/* (j) */
+ 	p4 = p5 + 1;	            // O endereço do ponteiro 'p4' será o mesmo do ponteiro 'p5' incrementado de 1 byte(char).
+  	idade = *p4;	            // Armazena o conteúdo apontado por 'p4'.
+  	printf("%d \n", idade);	    //Imprime o valor da variável idade.
+                                //Resultado: 27
+
+
+
+
+
+
+  	/* (l) */
+  	p4 = p4 - 2;	            // O endereço do ponteiro 'p4' será decrementado em 2 byte(char).
+  	idade = *p4;	            // Armazena o conteúdo apontado por 'p4'.
+  	printf("%d \n", idade);	    //Imprime o valor da variável idade.
+                                //Resultado: 31
+
+
+
+
+
+
+ 	/* (m) */
+  	p5 = &vetor[2] - 1;	        // Armazena o endereço do posição do vetor 'vetor[2]' decrementado em 1 byte.
+  	printf("%d \n", *p5);	    //Imprime o conteúdo do ponteiro 'p5'.
+                                //Resultado: 45
+
+
+
+
+
+
+  	/* (n) */
+  	p5++;			            //Incrementa o endereço do ponteiro 'p5' em 1 byte.
+ 	printf("%d \n", *p5);	    //Imprime o conteúdo do ponteiro 'p5'.
+                                //Resultado: 27
+
+
+    return 0;
+}

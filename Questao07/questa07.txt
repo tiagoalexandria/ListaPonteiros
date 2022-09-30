@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+//Feita por Arilson Nascimento - Matricula 20220021060 - DCA0803
+int main()
+{
+    int *p, mat[4], x;
+
+    p = mat + 1;    // VÁLIDA
+    p = mat++;      // INVÁLIDA
+    p = ++mat;      // INVÁLIDA
+    p = mat + 1;    // VÁLIDA
+
+                    // Resultado: Nesse caso, apenas   'p = mat + 1' e 'p = mat + 1'  está correta, pois as demais não podem incrementar valor do tipo int ao ponteiro.
+
+    return 0;
+}
