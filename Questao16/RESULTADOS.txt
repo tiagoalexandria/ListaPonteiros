@@ -1,0 +1,18 @@
+//!QUESTÃO 14 CRONOMETRADA
+/*Digite quantos valores devem ser gerados: 9
+Numeros gerados - 0.43 0.64 1.53 1.22 0.38 1.88 0.53 0.70 1.21
+Ordem crescente -  0.38 0.43 0.53 0.64 0.70 1.21 1.22 1.53 1.88
+
+Tempo decorrido: 1377 milissegundos.
+Aproximadamente: 1.4 segundos.*/
+
+
+//!QUESTÃO 15 CRONOMETRADA
+/*Digite quantos valores devem ser gerados: 9
+Numeros gerados - 0.69 4.76 1.43 0.76 0.11 0.08 1.17 0.50 0.07
+Ordem crescente -  0.07 0.08 0.11 0.50 0.69 0.76 1.17 1.43 4.76
+
+Tempo gasto: 777 ms.
+Em seg.....: 0.78 s.*/
+
+//!NESSES DOIS EXEMPLOS, A QUESTAO 15 FOI CONSIDERAVELMENTE MAIS RAPIDA, MAS ISSO VARIA MUITO, TEVE VEZES QUE A 15 FOI MAIS LENTA, OU OS RESULTADOS FORAM MUITO PARECIDOS, MAS A 14 APARENTEMENTE TENDE A SER MAIS ESTÁVEL.
