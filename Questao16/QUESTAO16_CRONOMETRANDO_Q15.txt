@@ -1,0 +1,116 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <time.h> //biblioteca para usar o clock
+//!QUESTAO 16 MARCANDO TEMPO DECORRIDO DA QUESTAO 15
+//Feita por Tiago Bezerra DCA0803
+
+//O protótipo da função é void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*))
+//Fonte qsort: https://www.galirows.com.br/meublog/programacao/utilizacao-funcao-qsort/
+
+
+
+//!NOTA PARA O PROFESSOR!!!:
+//Algumas vezes, o float podera retornar #J nos decimais, pesquisei no stackoverflow e nao consegui entender o porque disso.
+//Seguna fonte:
+//!https://stackoverflow.com/questions/840081/what-does-floating-point-error-1-j-mean
+
+//--------------//
+
+//!PRIMEIRA PARTE
+
+//--------------//
+
+int comparador(const void *a, const void *b){
+	return (*(int*)b - *(int*)a);
+}
+void alexandria(float *vetor, int n, int (*comparador)(float *a, float *b)); //QUESTAO15
+
+
+int main(void){
+
+    clock_t start[2];
+
+
+	float *x, f; //ponteiro para float e variavel para receber valores de x[i] e variavel para funcao alexandria
+	int i, n, a, b; //Variaveis auxiliares e a base da funcao qsort()
+
+    start[0] = clock();//clock comeca aqui
+
+
+	printf("Digite quantos valores devem ser gerados: ");
+	scanf("%d", &n);// recebe quantidade a quantidade dos numeros a serem gerados
+	x = (float*) malloc(n*sizeof(float)); // memory allocation
+
+	//verificar se a alocacao foi bem sucedida:
+	if(x == NULL){
+		printf("INVALIDO, MAIS SORTE NA PROXIMA VEZ");
+
+	}
+
+	srand(time(x)); // rand gera numeros aleatorios, srand gera numeros aleatorios toda vez que executar o codigo
+
+//-------------//
+
+//!SEGUNDA PARTE
+
+//-------------//
+
+
+	for(i = 0; i<n; i++){ //gera valores aleatorios para o vetor
+		 a  =  rand()%100;//guarda em a um valor inteiro
+		 b  =  rand()%100;//guarda em b um valor inteiro
+		 f  =  ((float)a/b);//divide a por b para gerar decimais, guarda o resultado em f
+
+		x[i] =  f;//cria um vetor
+	}
+
+	printf("Numeros gerados - ");//imprime valores gerados
+	for(i = 0; i<n; i++){
+		printf("%.2f ", x[i]);
+	}
+
+	//VETOR COM FUNCAO QSORT
+	alexandria(x, n, comparador);
+
+		printf("\n");
+
+	printf("Ordem crescente -  "); //imprime valores agora em ordem crescente
+	for(i = 0; i<n; i++){
+		printf("%.2f ", x[i]);
+	}
+
+
+	//Liberacao da memoria
+	free(x);
+
+	start[1] = clock();
+	double time = (start[1] - start[0]) * 1000.0 / CLOCKS_PER_SEC;
+	printf("\n\nTempo gasto: %g ms.", time);
+	printf("\nEm seg.....: %.2g s.", time/1000);
+
+	getch();
+
+}
+//ordenar comparador como qsort:
+void alexandria(float *vetor, int n, int(*comparador)(float *a, float *b)){
+	int i, j;
+	float aux = 0; //float aux = auxiliar
+
+	for(i = 0; i < n; i++){
+		for(j = 0; j < n; j++){
+			if(comparador(vetor+i,vetor+j)>0){
+				aux = vetor[j];
+				vetor[j] = vetor[i];
+				vetor[i] = aux;
+			}
+		}
+	}
+
+}
+
+
+//-------------//
+
+//!ESSE EH O FIM
+
+//-------------//
