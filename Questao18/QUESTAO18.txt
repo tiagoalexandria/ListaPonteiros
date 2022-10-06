@@ -1,0 +1,109 @@
+#include<stdio.h>
+#include<stdlib.h>
+//Feita por Tiago Bezerra DCA 0803
+//====================//
+//!Prototipo das funcoes
+//====================//
+void MatrizLeitura (int nl, int nc, int **m);
+void MatrizEscrita (int nl, int nc, int **m);
+void MatrizResultante(int nlA, int ncA, int ncB, int **ma, int **mb, int **mc);
+
+int i, j, k; //variaveis de iteracao
+
+int main (void){
+
+	srand(time(0));
+
+	int **ma, **mb, **mc, nlA, ncA, ncB;
+
+	printf("Digite o numero de linhas e colunas da matriz(ex.: i j): ");
+	scanf("%d %d", &nlA, &ncA); //pede do usuario dados das matrizes a e b
+	ncB = nlA;//numero de colunas de matriz B recebe numero de linhas da matriz A
+
+
+	//==================//
+    //!Alocacao de memoria
+    //==================//
+
+    //matriz a
+	ma = malloc(nlA*sizeof(int*));
+	ma[0] = malloc(ncA*nlA*sizeof(int*));
+	for (i = 1; i< nlA; i++){
+  	ma[i] = ma[i-1] + ncA;
+	}
+
+    //matriz b
+	mb = malloc(ncA*sizeof(int*));
+	mb[0] = malloc(ncA*ncB*sizeof(int));
+	for (i = 1; i< ncA; i++){
+  	mb[i] = mb[i-1] + ncB;
+	}
+
+    //matriz c
+	mc = malloc(nlA*sizeof(int*));
+	mc[0] = malloc(nlA*ncB*sizeof(int));
+	for (i = 1; i< nlA; i++){
+  	mc[i] = mc[i-1] + ncB;
+	}
+
+	//Preencher pelo usuario (funcao):
+	MatrizEscrita(nlA, ncA, ma);
+	MatrizEscrita(ncA, ncB, mb);
+	MatrizResultante(nlA, ncA, ncB, ma, mb, mc);
+
+	//Exibir:
+	printf("Matriz A:\n");
+	MatrizLeitura(nlA, ncA, ma);
+	printf("\nMatriz B:\n");
+	MatrizLeitura(ncA, ncB, mb);
+	printf("\nMatriz C (Resultante):\n");
+	MatrizLeitura(nlA, ncB, mc);
+
+	//free allocation
+	free(mc[0]);
+	free(mc);
+	free(mb[0]);
+	free(mb);
+	free(ma[0]);
+	free(ma);
+
+}
+
+//Gerar numeros aleatorios para as matrizes:
+void MatrizEscrita (int nl, int nc, int **m){
+
+	for (i = 0; i<nl; i++){
+  		for (j =0; j<nc; j++){
+    		m[i][j] = (rand()%5);
+  		}
+	}
+}
+
+//Ler/Exibir numeros aleatorios da matriz:
+void MatrizLeitura (int nl, int nc, int **m){
+
+	for (i = 0; i < nl; i++){
+  		for (j =0; j < nc; j++){
+    		printf("|%d|", m[i][j]);
+  		}
+  		printf("\n");
+	}
+}
+
+//Multiplicacao de matrizes
+void MatrizResultante(int nlA, int ncA, int ncB, int **ma, int **mb, int **mc){
+
+	for (i = 0; i<nlA; i++){
+  		for (j =0; j<ncB; j++){
+  			mc[i][j] = 0;
+		}
+	}
+
+	for (i = 0; i<nlA; i++){
+  		for (j =0; j<ncB; j++){
+    		for(k = 0; k<ncA; k++){
+    		 mc[i][j] = ma[i][k]*mb[k][j]+mc[i][j];
+    		}
+  		}
+	}
+}
