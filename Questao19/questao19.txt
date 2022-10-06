@@ -1,87 +1,81 @@
 #include<stdio.h>
-#include<stdlib.h>
-//Feita por Tiago Bezerra DCA0803
+#include "gc.h"
+//Feita por Tiago Bezerra - DCA0803
 //Fonte fflush: http://www.cmaismais.com.br/referencia/cstdio/fflush/
 
-
-void VetorLeitura (int tamanho, int *vt);
-void VetorEscrita (int tamanho, int *vt);
-void VetorSoma (int tamanho, int *vta, int *vtb, int *vtc);
+void VetorLeitura (int tam, int *vt);
+void VetorEscrita (int tam, int *vt);
+void VetorSoma (int tam, int *vta, int *vtb, int *vtc);
 
 
 int main (void){
-
-
+	 
+	
 	int elementos, *a, *b, *c, i;
 	char nomeA[10], nomeB[10], nomeC[10];
-
-	printf("Digite o numero de elementos dos vetores:");
+	
+	printf("Digite o tamanho do vetor: ");
 	scanf("%d", &elementos);
-
-		fflush(stdin);
-        //fflush limpa o buffer de entrega, possibilitando inumeras iteracoes com o usuario
+		
+		fflush(stdin);//fflush limpa o buffer de entrega, possibilitando inumeras iteracoes com o usuario
+		
+		
 		printf("digite o nome do vetor A: ");
 		gets(nomeA);
-
+		
 		printf("digite o nome do vetor B: ");
 		gets(nomeB);
-
+	
 		printf("digite o nome do vetor soma: ");
 		gets(nomeC);
 
-
-	a = malloc(elementos*sizeof(int));
-	b = malloc(elementos*sizeof(int));
-	c = malloc(elementos*sizeof(int));
-
+	a = GC_malloc_ATOMIC(elementos*sizeof(int));
+	b = GC_malloc_ATOMIC(elementos*sizeof(int));
+	c = GC_malloc_ATOMIC(elementos*sizeof(int));
+	
 	VetorEscrita (elementos, a); //preencher vetor
 	VetorEscrita (elementos, b);
-
+	
 	printf("\n");
-
+	
 	printf("%s: ", nomeA);
 	VetorLeitura(elementos, a);//exibir o vetor
-
+	
 	printf("\n");
-
+	
 	printf("%s: ", nomeB);
 	VetorLeitura(elementos, b);
-
+	
 	printf("\n");
-
-	VetorSoma(elementos, a, b, c); 
-
+	
+	VetorSoma(elementos, a, b, c);
+	
 	printf("%s: ", nomeC);
 	VetorLeitura(elementos, c);
-
-	free(a);
-	free(b);
-	free(c);
+	
 }
-
 //Funcao Escrita
-void VetorEscrita (int tamanho, int *vt){
+void VetorEscrita (int tam, int *vt){
 	unsigned int i = 0;
-
-	for(i = 0; i < tamanho; i++){
+	
+	for(i = 0; i < tam; i++){
 		vt[i] = (rand()%100);
-	}
+	}	
 }
-
 //Funcao Leitura
-void VetorLeitura (int tamanho, int *vt){
+void VetorLeitura (int tam, int *vt){
 	unsigned int i = 0;
-
-	for(i = 0; i < tamanho; i++){
+	
+	for(i = 0; i < tam; i++){
 		printf("%d ", vt[i]);
-	}
+	}		
 }
-
 //Funcao soma
-void VetorSoma(int tamanho, int *vta, int *vtb, int *vtc){
+void VetorSoma(int tam, int *vta, int *vtb, int *vtc){
 	int i;
-	for(i = 0; i < tamanho; i++){
+	for(i = 0; i < tam; i++){
 		vtc[i] = vta[i] + vtb[i];
 	}
-
+	
 }
+
