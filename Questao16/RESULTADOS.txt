@@ -1,3 +1,4 @@
+//Feita por Tiago Bezerra DCA0803
 //!QUESTÃO 14 CRONOMETRADA
 /*Digite quantos valores devem ser gerados: 9
 Numeros gerados - 0.43 0.64 1.53 1.22 0.38 1.88 0.53 0.70 1.21
